@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joyeux anniversaire Rose • 17 ans</title>
+  <link rel="stylesheet" href="stylePR.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="brand" aria-label="Anniversaire Rose">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Rose • 17 ans</span>
+        </div>
+
+        <nav class="menu" aria-label="Navigation">
+          <a href="#amour">Mon amour pour toi</a>
+          <a href="#souvenirs">Nos souvenirs</a>
+          <a href="#amis">Rose avec ses amis</a>
+          <a href="#mots">Les petits mots</a>
+        </nav>
+
+        <div class="cta">
+          <a class="btn primary" href="#amour" aria-label="Découvrir">
+            <span>Découvrir</span>
+            <span aria-hidden="true">💗</span>
+          </a>
+          <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-panel" id="mobilePanel" role="region" aria-label="Menu mobile">
+        <a href="#amour">Mon amour pour toi</a>
+        <a href="#souvenirs">Nos souvenirs</a>
+        <a href="#amis">Rose avec ses amis</a>
+        <a href="#mots">Les petits mots</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1) Accueil -->
+    <section class="hero" aria-label="Accueil">
+      <div class="container">
+        <div class="hero-card page-load-fade">
+          <div class="kicker"><span class="spark" aria-hidden="true"></span> Joyeux anniversaire • Rose</div>
+          <h1>Joyeux anniversaire Rose</h1>
+          <p>17 ans de beauté, de douceur et de lumière</p>
+
+          <div class="actions">
+            <a class="btn primary" href="#amour" aria-label="Découvrir">
+              <span>Découvrir</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="btn" href="#mots" aria-label="Écrire un message">
+              <span>Écrire un mot</span>
+              <span aria-hidden="true">✍️</span>
+            </a>
+          </div>
+
+          <div class="scroll-down" aria-hidden="true">
+            <span>↓</span>
+            <span>Fais défiler</span>
+            <span>✨</span>
+          </div>
+
+          <!-- Décorations légères (sans dépendre de photos) -->
+          <div aria-hidden="true" style="position:absolute; inset:0; pointer-events:none;">
+            <div style="position:absolute; top:18px; left:18px; font-size:22px; opacity:.7;">🌷</div>
+            <div style="position:absolute; top:22px; right:22px; font-size:18px; opacity:.7;">⭐</div>
+            <div style="position:absolute; bottom:18px; left:22px; font-size:20px; opacity:.7;">💗</div>
+            <div style="position:absolute; bottom:24px; right:24px; font-size:20px; opacity:.7;">✨</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2) Mon amour pour toi -->
+    <section id="amour" aria-label="Mon amour pour toi">
+      <div class="container">
+        <div class="section-title">
+          <h2>Ce que je ressens pour toi</h2>
+          <p>Intime, doux et chaleureux.</p>
+        </div>
+
+        <div class="panel">
+          <p class="love-text" contenteditable="false" id="loveText">
+            Rose, ici je pourrai écrire tout ce que je ressens pour toi, tous les souvenirs que j’aime, ce que tu représentes pour moi et pourquoi tu rends ma vie plus belle chaque jour.
+          </p>
+          <p style="margin-top:10px; color:var(--muted); font-weight:900;">
+            (Tu peux modifier le texte directement dans le fichier HTML.)
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3) Nos souvenirs -->
+    <section id="souvenirs" aria-label="Nos souvenirs">
+      <div class="container">
+        <div class="section-title">
+          <h2>Nos souvenirs</h2>
+          <p>Galerie pour nos futures photos.</p>
+        </div>
+
+        <div class="panel">
+          <div class="gallery-grid" role="list">
+            <div class="photo-card" role="listitem">
+              <div class="photo-placeholder">Photo à ajouter</div>
+              <div class="photo-label">
+                <div class="edit">Légende (modifiable)</div>
+                <input type="text" value="Nous 1" aria-label="Légende Nous 1" />
+              </div>
+              <input type="hidden" value="images/nous1.jpg" />
+            </div>
+
+            <div class="photo-card" role="listitem">
+              <div class="photo-placeholder">Photo à ajouter</div>
+              <div class="photo-label">
+                <div class="edit">Légende (modifiable)</div>
+                <input type="text" value="Nous 2" aria-label="Légende Nous 2" />
+              </div>
+              <input type="hidden" value="images/nous2.jpg" />
+            </div>
+
+            <div class="photo-card" role="listitem">
+              <div class="photo-placeholder">Photo à ajouter</div>
+              <div class="photo-label">
+                <div class="edit">Légende (modifiable)</div>
+                <input type="text" value="Nous 3" aria-label="Légende Nous 3" />
+              </div>
+              <input type="hidden" value="images/nous3.jpg" />
+            </div>
+
+            <div class="photo-card" role="listitem">
+              <div class="photo-placeholder">Photo à ajouter</div>
+              <div class="photo-label">
+                <div class="edit">Légende (modifiable)</div>
+                <input type="text" value="Nous 4" aria-label="Légende Nous 4" />
+              </div>
+              <input type="hidden" value="images/nous4.jpg" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4) Rose avec ses amis -->
+    <section id="amis" aria-label="Rose avec ses amis">
+      <div class="container">
+        <div class="section-title">
+          <h2>Rose avec ses amis</h2>
+          <p>Galerie joyeuse, douce et amicale.</p>
+        </div>
+
+        <div class="panel">
+          <div class="gallery-grid" role="list">
+            <div class="photo-card" role="listitem">
+              <div class="photo-placeholder">Photo avec les amis</div>
+              <div class="photo-label">
+                <div class="edit">Prénom / légende</div>
+                <input type="text" value="Amis 1" aria-label="Légende Amis 1" />
+              </div>
+              <input type="hidden" value="images/amis1.jpg" />
+            </div>
+
+            <div class="photo-card" role="listitem">
+              <div class="photo-placeholder">Photo avec les amis</div>
+              <div class="photo-label">
+                <div class="edit">Prénom / légende</div>
+                <input type="text" value="Amis 2" aria-label="Légende Amis 2" />
+              </div>
+              <input type="hidden" value="images/amis2.jpg" />
+            </div>
+
+            <div class="photo-card" role="listitem">
+              <div class="photo-placeholder">Photo avec les amis</div>
+              <div class="photo-label">
+                <div class="edit">Prénom / légende</div>
+                <input type="text" value="Amis 3" aria-label="Légende Amis 3" />
+              </div>
+              <input type="hidden" value="images/amis3.jpg" />
+            </div>
+
+            <div class="photo-card" role="listitem">
+              <div class="photo-placeholder">Photo avec les amis</div>
+              <div class="photo-label">
+                <div class="edit">Prénom / légende</div>
+                <input type="text" value="Amis 4" aria-label="Légende Amis 4" />
+              </div>
+              <input type="hidden" value="images/amis4.jpg" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5) Les petits mots pour Rose -->
+    <section id="mots" aria-label="Les petits mots pour Rose">
+      <div class="container">
+        <div class="section-title">
+          <h2>Les petits mots pour Rose</h2>
+          <p>Les amis peuvent laisser un message.</p>
+        </div>
+
+        <div class="comment-grid">
+          <div class="panel">
+            <form id="guestForm">
+              <div class="form-row">
+                <label for="guestName">Prénom</label>
+                <input type="text" id="guestName" placeholder="Ex : Samira" required />
+              </div>
+
+              <div class="form-row">
+                <label for="guestText">Ton message pour Rose</label>
+                <textarea id="guestText" placeholder="Écris un petit mot tendre..." required></textarea>
+              </div>
+
+              <button class="btn primary" type="submit">
+                <span>Envoyer le message</span>
+                <span aria-hidden="true">💌</span>
+              </button>
+            </form>
+            <p style="margin:12px 0 0; color:var(--muted); font-weight:900; font-size:13px;">
+              Les messages sont sauvegardés avec <b>localStorage</b> (sans backend).
+            </p>
+          </div>
+
+          <div class="panel">
+            <div class="guest-list" id="messagesList" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6) Section finale -->
+    <section class="final" aria-label="Fin du site">
+      <div class="container">
+        <div class="final-card page-load-fade">
+          <div class="pulse-heart" aria-hidden="true">💗</div>
+          <h3>Joyeux anniversaire mon amour, je t’aime plus que tout.</h3>
+          <p>Avec toute ma douceur et mon cœur.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="padding: 20px 0 34px; color: var(--muted); font-weight:900; text-align:center;">
+    © <span id="year"></span> Rose • 17 ans
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menu mobile
+    const burger = document.getElementById('burger');
+    const mobilePanel = document.getElementById('mobilePanel');
+    if (burger && mobilePanel) {
+      burger.addEventListener('click', () => {
+        const isOpen = mobilePanel.classList.contains('open');
+        mobilePanel.classList.toggle('open');
+        burger.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      mobilePanel.addEventListener('click', (e) => {
+        if (e.target && e.target.tagName === 'A') {
+          mobilePanel.classList.remove('open');
+          burger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

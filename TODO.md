@@ -1,0 +1,5 @@
+- [x] Comprendre la structure actuelle de `codePR.html` et comment il est stylé
+- [x] Remplacer totalement le contenu de `codePR.html` par un site dédié à Rose (17 ans)
+- [x] Adapter/laisser l’utilisation de `stylePR.css` et `script.js` (responsive + sections demandées)
+- [x] Vérifier les liens relatifs (navigation/ancres)
+- [x] Lancer un test rapide (ouvrir `codePR.html` dans le navigateur)
