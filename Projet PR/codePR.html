@@ -89,10 +89,10 @@
 
         <div class="panel">
           <p class="love-text" contenteditable="false" id="loveText">
-            Rose, ici je pourrai écrire tout ce que je ressens pour toi, tous les souvenirs que j’aime, ce que tu représentes pour moi et pourquoi tu rends ma vie plus belle chaque jour.
-          </p>
-          <p style="margin-top:10px; color:var(--muted); font-weight:900;">
-            (Tu peux modifier le texte directement dans le fichier HTML.)
+            Rose, mon amour,J’ai créé ce site pour te prouver de la plus belle des manières à quel point je t’aime. Je voulais créer quelque chose qui puisse rester pour toute ta vie, un souvenir de nous et de tout l’amour que j’ai pour toi.
+            Ça fait déjà 9 mois qu’on est ensemble, et honnêtement, ce sont les 9 plus beaux mois de ma vie. Même si le début, entre le mois d’août et la fin novembre, n’a pas toujours été simple, tout ce qui a suivi a été l’une des plus belles choses qui auraient pu m’arriver.
+            Je t’aime énormément, Rose, et j’espère vraiment que tu aimeras ton cadeau, même s’il est un peu en retard.
+            Et surtout, n’oublie pas : regarde bien le site le 4 décembre.
           </p>
         </div>
       </div>
@@ -103,46 +103,81 @@
       <div class="container">
         <div class="section-title">
           <h2>Nos souvenirs</h2>
-          <p>Galerie pour nos futures photos.</p>
+          <p>Les moments que nous avons partagés.</p>
         </div>
 
         <div class="panel">
-          <div class="gallery-grid" role="list">
-            <div class="photo-card" role="listitem">
-              <div class="photo-placeholder">Photo à ajouter</div>
+          <div class="photo-carousel" data-carousel aria-label="Galerie de nos souvenirs">
+            <button class="carousel-btn" type="button" data-carousel-prev aria-label="Voir les souvenirs précédents">&lsaquo;</button>
+            <div class="photo-carousel-window" data-carousel-window>
+              <div class="photo-carousel-track" data-carousel-track role="list">
+                <div class="photo-slide" role="listitem">
+                  <div class="photo-card">
+              <div class="photo-media">
+                <img class="photo-img" src="../photo pr/fR/fRA.JPG" alt="Photo souvenir" />
+              </div>
               <div class="photo-label">
                 <div class="edit">Légende (modifiable)</div>
                 <input type="text" value="Nous 1" aria-label="Légende Nous 1" />
               </div>
-              <input type="hidden" value="images/nous1.jpg" />
-            </div>
+              <input type="hidden" value="../photo pr/fR/fRA.JPG" />
+                  </div>
+                </div>
 
-            <div class="photo-card" role="listitem">
-              <div class="photo-placeholder">Photo à ajouter</div>
+                <div class="photo-slide" role="listitem">
+                  <div class="photo-card">
+              <div class="photo-media">
+                <img class="photo-img" src="../photo pr/fR/fRN.JPG" alt="Photo souvenir" />
+              </div>
               <div class="photo-label">
-                <div class="edit">Légende (modifiable)</div>
+                <div class="edit">nous dans l'a</div>
                 <input type="text" value="Nous 2" aria-label="Légende Nous 2" />
               </div>
-              <input type="hidden" value="images/nous2.jpg" />
-            </div>
+              <input type="hidden" value="../photo pr/fR/fRN.JPG" />
+                  </div>
+                </div>
 
-            <div class="photo-card" role="listitem">
-              <div class="photo-placeholder">Photo à ajouter</div>
+                <div class="photo-slide" role="listitem">
+                  <div class="photo-card">
+              <div class="photo-media">
+                <img class="photo-img" src="../photo pr/fR/fRR.JPG" alt="Photo souvenir" />
+              </div>
               <div class="photo-label">
                 <div class="edit">Légende (modifiable)</div>
                 <input type="text" value="Nous 3" aria-label="Légende Nous 3" />
               </div>
-              <input type="hidden" value="images/nous3.jpg" />
-            </div>
+              <input type="hidden" value="../photo pr/fR/fRR.JPG" />
+                  </div>
+                </div>
 
-            <div class="photo-card" role="listitem">
-              <div class="photo-placeholder">Photo à ajouter</div>
+                <div class="photo-slide" role="listitem">
+                  <div class="photo-card">
+              <div class="photo-media">
+                <img class="photo-img" src="../photo pr/fR/FRS.jpeg" alt="Photo souvenir" />
+              </div>
               <div class="photo-label">
                 <div class="edit">Légende (modifiable)</div>
                 <input type="text" value="Nous 4" aria-label="Légende Nous 4" />
               </div>
-              <input type="hidden" value="images/nous4.jpg" />
+              <input type="hidden" value="../photo pr/fR/FRS.jpeg" />
+                  </div>
+                </div>
+
+                <div class="photo-slide" role="listitem">
+                  <div class="photo-card">
+                    <div class="photo-media">
+                      <img class="photo-img" src="../photo pr/fR/IMG_2483.JPG" alt="Photo souvenir" />
+                    </div>
+                    <div class="photo-label">
+                      <div class="edit">Légende (modifiable)</div>
+                      <input type="text" value="Nous 5" aria-label="Légende Nous 5" />
+                    </div>
+                    <input type="hidden" value="../photo pr/fR/IMG_2483.JPG" />
+                  </div>
+                </div>
+              </div>
             </div>
+            <button class="carousel-btn" type="button" data-carousel-next aria-label="Voir les souvenirs suivants">&rsaquo;</button>
           </div>
         </div>
       </div>
@@ -157,42 +192,115 @@
         </div>
 
         <div class="panel">
-          <div class="gallery-grid" role="list">
-            <div class="photo-card" role="listitem">
-              <div class="photo-placeholder">Photo avec les amis</div>
-              <div class="photo-label">
-                <div class="edit">Prénom / légende</div>
-                <input type="text" value="Amis 1" aria-label="Légende Amis 1" />
+          <div class="photo-carousel" data-carousel aria-label="Galerie photo des amis">
+            <button class="carousel-btn" type="button" data-carousel-prev aria-label="Voir les photos précédentes">&lsaquo;</button>
+
+            <div class="photo-carousel-window" data-carousel-window>
+              <div class="photo-carousel-track" data-carousel-track role="list">
+                <div class="photo-slide" role="listitem">
+                  <div class="photo-card">
+                <div class="photo-media">
+                  <img class="photo-img" src="../photo pr/pote/IMG_2230.JPG" alt="Photo amis" />
+                </div>
+                <div class="photo-label">
+                  <div class="edit">Prénom / légende</div>
+                  <input type="text" value="Amis 1" aria-label="Légende Amis 1" />
+                </div>
+                <input type="hidden" value="../photo pr/pote/IMG_2230.JPG" />
+                  </div>
+                </div>
+
+                <div class="photo-slide" role="listitem">
+                  <div class="photo-card">
+                <div class="photo-media">
+                  <img class="photo-img" src="../photo pr/pote/IMG_9288.JPEG" alt="Photo amis" />
+                </div>
+                <div class="photo-label">
+                  <div class="edit">Prénom / légende</div>
+                  <input type="text" value="Amis 2" aria-label="Légende Amis 2" />
+                </div>
+                <input type="hidden" value="../photo pr/pote/IMG_9288.JPEG" />
+                  </div>
+                </div>
+
+                <div class="photo-slide" role="listitem">
+                  <div class="photo-card">
+                <div class="photo-media">
+                  <img class="photo-img" src="../photo pr/pote/24d828bf-dae3-4326-ac54-99314734f770.JPG" alt="Photo amis" />
+                </div>
+                <div class="photo-label">
+                  <div class="edit">Prénom / légende</div>
+                  <input type="text" value="Amis 3" aria-label="Légende Amis 3" />
+                </div>
+                <input type="hidden" value="../photo pr/pote/24d828bf-dae3-4326-ac54-99314734f770.JPG" />
+                  </div>
+                </div>
+
+                <div class="photo-slide" role="listitem">
+                  <div class="photo-card">
+                <div class="photo-media">
+                  <img class="photo-img" src="../photo pr/pote/ec712b4e-cd54-4170-8079-b1f1e0b0f771.JPG" alt="Photo amis" />
+                </div>
+                <div class="photo-label">
+                  <div class="edit">Prénom / légende</div>
+                  <input type="text" value="Amis 4" aria-label="Légende Amis 4" />
+                </div>
+                <input type="hidden" value="../photo pr/pote/ec712b4e-cd54-4170-8079-b1f1e0b0f771.JPG" />
+                  </div>
+                </div>
+
+                <div class="photo-slide" role="listitem">
+                  <div class="photo-card">
+                <div class="photo-media">
+                  <img class="photo-img" src="../photo pr/pote/28d4c61a-75ff-4567-8d1a-c9f2c14a2c6f.JPG" alt="Photo amis" />
+                </div>
+                <div class="photo-label">
+                  <div class="edit">Prénom / légende</div>
+                  <input type="text" value="Amis 5" aria-label="Légende Amis 5" />
+                </div>
+                <input type="hidden" value="../photo pr/pote/28d4c61a-75ff-4567-8d1a-c9f2c14a2c6f.JPG" />
+                  </div>
+                </div>
+                <div class="photo-slide" role="listitem">
+                  <div class="photo-card">
+                    <div class="photo-media">
+                      <img class="photo-img" src="../photo pr/pote/CD37BCDB-1682-4640-A5CC-EA88469156E4.jpeg" alt="Photo de Rose avec ses amis" />
+                    </div>
+                    <div class="photo-label">
+                      <div class="edit">Prénom / légende</div>
+                      <input type="text" value="Amis 6" aria-label="Légende Amis 6" />
+                    </div>
+                    <input type="hidden" value="../photo pr/pote/CD37BCDB-1682-4640-A5CC-EA88469156E4.jpeg" />
+                  </div>
+                </div>
+                <div class="photo-slide" role="listitem">
+                  <div class="photo-card">
+                    <div class="photo-media">
+                      <img class="photo-img" src="../photo pr/pote/IMG_9503.jpeg" alt="Photo de Rose avec ses amis" />
+                    </div>
+                    <div class="photo-label">
+                      <div class="edit">Prénom / légende</div>
+                      <input type="text" value="Amis 7" aria-label="Légende Amis 7" />
+                    </div>
+                    <input type="hidden" value="../photo pr/pote/IMG_9503.jpeg" />
+                  </div>
+                </div>
+                <div class="photo-slide" role="listitem">
+                  <div class="photo-card">
+                    <div class="photo-media">
+                      <img class="photo-img" src="../photo pr/pote/IMG_9504.jpeg" alt="Photo de Rose avec ses amis" />
+                    </div>
+                    <div class="photo-label">
+                      <div class="edit">Prénom / légende</div>
+                      <input type="text" value="Amis 8" aria-label="Légende Amis 8" />
+                    </div>
+                    <input type="hidden" value="../photo pr/pote/IMG_9504.jpeg" />
+                  </div>
+                </div>
               </div>
-              <input type="hidden" value="images/amis1.jpg" />
             </div>
 
-            <div class="photo-card" role="listitem">
-              <div class="photo-placeholder">Photo avec les amis</div>
-              <div class="photo-label">
-                <div class="edit">Prénom / légende</div>
-                <input type="text" value="Amis 2" aria-label="Légende Amis 2" />
-              </div>
-              <input type="hidden" value="images/amis2.jpg" />
-            </div>
-
-            <div class="photo-card" role="listitem">
-              <div class="photo-placeholder">Photo avec les amis</div>
-              <div class="photo-label">
-                <div class="edit">Prénom / légende</div>
-                <input type="text" value="Amis 3" aria-label="Légende Amis 3" />
-              </div>
-              <input type="hidden" value="images/amis3.jpg" />
-            </div>
-
-            <div class="photo-card" role="listitem">
-              <div class="photo-placeholder">Photo avec les amis</div>
-              <div class="photo-label">
-                <div class="edit">Prénom / légende</div>
-                <input type="text" value="Amis 4" aria-label="Légende Amis 4" />
-              </div>
-              <input type="hidden" value="images/amis4.jpg" />
-            </div>
+            <button class="carousel-btn" type="button" data-carousel-next aria-label="Voir les photos suivantes">&rsaquo;</button>
           </div>
         </div>
       </div>

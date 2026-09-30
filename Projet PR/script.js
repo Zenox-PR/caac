@@ -107,6 +107,62 @@ function initStatus() {
   messagesList.insertAdjacentElement("beforebegin", el);
 }
 
+function initPhotoCarousels() {
+  document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+    const windowEl = carousel.querySelector("[data-carousel-window]");
+    const track = carousel.querySelector("[data-carousel-track]");
+    const prevButton = carousel.querySelector("[data-carousel-prev]");
+    const nextButton = carousel.querySelector("[data-carousel-next]");
+    if (!windowEl || !track || !prevButton || !nextButton) return;
+
+    let position = 0;
+    let pointerStart = null;
+
+    const maximum = () => Math.max(0, track.scrollWidth - windowEl.clientWidth);
+    const update = (animate = true) => {
+      position = Math.min(Math.max(position, 0), maximum());
+      track.style.transition = animate ? "" : "none";
+      track.style.transform = `translateX(${-position}px)`;
+      prevButton.disabled = position <= 1;
+      nextButton.disabled = position >= maximum() - 1;
+    };
+    const step = () => {
+      const firstSlide = track.querySelector(".photo-slide");
+      if (!firstSlide) return windowEl.clientWidth;
+      const gap = Number.parseFloat(getComputedStyle(track).gap) || 0;
+      return firstSlide.getBoundingClientRect().width + gap;
+    };
+
+    prevButton.addEventListener("click", () => { position -= step(); update(); });
+    nextButton.addEventListener("click", () => { position += step(); update(); });
+
+    windowEl.addEventListener("pointerdown", (event) => {
+      pointerStart = { x: event.clientX, position };
+      windowEl.setPointerCapture(event.pointerId);
+      windowEl.classList.add("is-dragging");
+      update(false);
+    });
+    windowEl.addEventListener("pointermove", (event) => {
+      if (!pointerStart) return;
+      position = pointerStart.position - (event.clientX - pointerStart.x);
+      update(false);
+    });
+    const finishDrag = (event) => {
+      if (!pointerStart) return;
+      const moved = pointerStart.position - position;
+      if (Math.abs(moved) > 30) position = pointerStart.position + (moved > 0 ? step() : -step());
+      pointerStart = null;
+      windowEl.classList.remove("is-dragging");
+      update();
+      if (windowEl.hasPointerCapture(event.pointerId)) windowEl.releasePointerCapture(event.pointerId);
+    };
+    windowEl.addEventListener("pointerup", finishDrag);
+    windowEl.addEventListener("pointercancel", finishDrag);
+    window.addEventListener("resize", () => update(false));
+    update(false);
+  });
+}
+
 function listenMessages() {
   const list = document.getElementById("messagesList");
   if (!list) return;
@@ -185,6 +241,7 @@ function initGuestForm() {
 
 document.addEventListener("DOMContentLoaded", () => {
   initStatus();
+  initPhotoCarousels();
   listenMessages();
   initGuestForm();
 });
