@@ -1,110 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Une petite surprise d'anniversaire pour Rose.">
+  <title>Une surprise pour Rose</title>
+  <link rel="stylesheet" href="revers/style_debut.css?v=mobile-2">
+</head>
+<body>
+  <main class="welcome">
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
 
-	<head>
+    <div class="intro">
+      <p class="eyebrow"><span aria-hidden="true">✦</span> Une surprise pour Rose <span aria-hidden="true">✦</span></p>
+      <h1>Joyeux anniversaire,<br><span>mon amour</span></h1>
+      <p class="lead">J’ai préparé quelque chose juste pour toi. Prête à découvrir ton cadeau ?</p>
+    </div>
 
-		<meta charset="UTF-8">
+    <div class="gift-stage">
+      <div class="btn">
+        <div class="btn-back">
+          <p>Tu aimes ton cadeau ?</p>
+          <div class="choices">
+            <button class="yes" type="button" onclick="window.location.href='annive_rose.html'">OUI !!! <span aria-hidden="true">♥</span></button>
+            <button class="no" type="button">Non</button>
+          </div>
+        </div>
+        <button class="btn-front" type="button" aria-label="Ouvrir ton cadeau">
+          <span class="front-heart" aria-hidden="true">♥</span>
+          <span class="front-title">Ton cadeau t’attend</span>
+          <span class="front-hint">Clique pour l’ouvrir <span aria-hidden="true">↗</span></span>
+        </button>
+      </div>
+      <p class="description">Un petit moment rien que pour toi <span aria-hidden="true">✨</span></p>
+    </div>
 
-		<title>bouton magique </title>
+    <p class="signature">Avec tout mon amour, pour Rose <span aria-hidden="true">♥</span></p>
+  </main>
 
-		<meta name="description" content="">
-		<meta name="author" content="Hakim El Hattab">
 
-		<meta name="viewport" content="width=460, user-scalable=no" />
-
-		<link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
-		<link href="revers/style_debut.css" rel="stylesheet" type="text/css" />
-
-	</head>
-
-	<body>
-
-		<div class="btn">
-			<div class="btn-back">
-				<p>t'aime ton cadeau</p>
-				<button class="yes" onclick="window.location.href='annive_rose.html'">OUI !!!</button>
-				<button class="no">Non</button>
-			</div>
-			<div class="btn-front">JOYEUX ANNIVERSAIRE</div>
-		</div>
-
-		<p class="description">c'est ton cadeau d'anniversaire j'espere que tu aimera rellement</p>
-
-		<script src="revers/script_debut.js"></script>
-
-		<!-- Third party scripts and sharing UI -->
-
-		<p class="project-title">voici le projet pour l'anniversaire de rose  </p>
-	    <style type="text/css" media="screen">
-			.project-title {
-				position: absolute;
-				left: 25px;
-				bottom: 8px;
-
-				font-size: 16px;
-				color: #444;
-			}
-
-			.credits {
-				position: absolute;
-				right: 20px;
-				bottom: 25px;
-				font-size: 15px;
-				z-index: 20;
-				color: #444;
-				vertical-align: middle;
-			}
-
-			.credits * + * {
-				margin-left: 15px;
-			}
-
-			.credits a {
-				padding: 8px 10px;
-				color: #444;
-				border: 2px solid #999;
-				text-decoration: none;
-			}
-
-			.credits a:hover {
-				border-color: #555;
-				color: #222;
-			}
-
-			@media screen and (max-width: 1040px) {
-				.project-title {
-					display: none;
-				}
-
-				.credits {
-					width: 100%;
-					left: 0;
-					right: auto;
-					bottom: 0;
-					padding: 30px 0;
-					background: #ddd;
-					text-align: center;
-				}
-
-				.credits a {
-					display: inline-block;
-					margin-top: 7px;
-					margin-bottom: 7px;
-				}
-			}
-		</style>
-
-		<script>
-			var _gaq = [['_setAccount', 'UA-15240703-1'], ['_trackPageview']];
-			(function(d, t) {
-			var g = d.createElement(t),
-			    s = d.getElementsByTagName(t)[0];
-			g.async = true;
-			g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			s.parentNode.insertBefore(g, s);
-			})(document, 'script');
-		</script>
-
-	</body>
-
+  <script src="revers/script_debut.js"></script>
+</body>
 </html>

@@ -275,6 +275,19 @@ section{ padding: 26px 0; }
 
 .photo-img.rotate-180{ transform: rotate(180deg); }
 
+/* Keep both people visible, including on tall souvenir photos. */
+#souvenirs .photo-media{ height: clamp(340px, 44vw, 480px); }
+#souvenirs .photo-img{
+  position: absolute;
+  inset: 0;
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
 .photo-label{
   padding: 10px 12px;
   display:flex;
@@ -361,20 +374,45 @@ section{ padding: 26px 0; }
 }
 
 @media (max-width: 620px){
+  .container{ width: calc(100% - 28px); }
+
+  section{ padding: 22px 0; }
+
+  .hero{ padding: 38px 0 18px; }
+
+  .hero-card{ padding: 24px 20px; }
+
+  .hero h1{ font-size: clamp(32px, 8vw, 42px); line-height: 1.08; }
+
+  .section-title{ display: block; margin-bottom: 12px; }
+
+  .section-title h2{ font-size: clamp(23px, 6.5vw, 28px); line-height: 1.2; }
+
+  .section-title p{ margin-top: 5px; font-size: 14px; line-height: 1.45; }
+
+  .panel{ min-width: 0; padding: 14px; }
+
+  .love-text{ font-size: 16px; font-weight: 650; line-height: 1.7; }
+
   .photo-carousel{
-    grid-template-columns: 38px minmax(0, 1fr) 38px;
-    gap: 8px;
+    grid-template-columns: 32px minmax(0, 1fr) 32px;
+    gap: 5px;
   }
 
-  .photo-slide{ flex-basis: 88%; }
+  .photo-slide{ flex-basis: 92%; }
 
-  .photo-media{ height: 280px; }
+  .photo-media{ height: 300px; }
 
   .carousel-btn{
-    width:38px;
-    height:38px;
-    font-size:27px;
+    width:32px;
+    height:32px;
+    font-size:24px;
   }
+}
+
+@media (max-width: 360px){
+  .nav .cta > .btn{ display: none; }
+  .brand{ white-space: nowrap; font-size: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -448,6 +486,7 @@ textarea{ min-height: 120px; resize: vertical; }
 .guest-name{ margin:0; font-size: 15px; font-weight: 950; }
 .guest-date{ margin: 4px 0 0; color: var(--muted); font-weight: 850; font-size: 12px; }
 .guest-text{ margin: 10px 0 12px; color: #3b2a30; font-weight: 800; }
+.guest-text{ overflow-wrap: anywhere; }
 
 .guest-actions{ display:flex; justify-content:flex-end; }
 .guest-delete{
@@ -460,6 +499,27 @@ textarea{ min-height: 120px; resize: vertical; }
 }
 
 .guest-delete:hover{ background: rgba(255,255,255,.9); }
+
+.comment-identity-note{
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.admin-access{ margin-top: 10px; }
+.admin-access button{
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 6px 0;
+}
+.admin-access button[hidden]{ display: none; }
 
 .sent{ transform: translateY(-1px); transition: transform .15s ease; }
 

@@ -9,6 +9,14 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import {
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInAnonymously,
+  signInWithPopup,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import {
   addDoc,
   collection,
   deleteDoc,
@@ -32,7 +40,25 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 const messagesRef = collection(db, "messages");
+let stopMessages;
+const adminEmail = "tubercrype@gmail.com";
+let currentMessages = [];
+
+function isAdmin(user) {
+  return Boolean(
+    user &&
+    user.emailVerified &&
+    user.email?.toLowerCase() === adminEmail &&
+    user.providerData.some((provider) => provider.providerId === "google.com")
+  );
+}
+
+function canDelete(message) {
+  const user = auth.currentUser;
+  return Boolean(user && (isAdmin(user) || message.ownerId === user.uid));
+}
 
 function escapeHtml(value) {
   return String(value)
@@ -69,6 +95,10 @@ function renderMessageCard(message) {
   const name = escapeHtml(message.name);
   const text = escapeHtml(message.text);
   const dateLabel = escapeHtml(formatDate(message.createdAt));
+  const deleteAction = canDelete(message) ? `
+      <div class="guest-actions">
+        <button class="guest-delete" type="button" data-id="${id}">Supprimer</button>
+      </div>` : "";
 
   return `
     <article class="guest-card" data-id="${id}">
@@ -80,13 +110,62 @@ function renderMessageCard(message) {
         </div>
       </div>
       <p class="guest-text">${text}</p>
-      <div class="guest-actions">
-        <button class="guest-delete" type="button" data-id="${id}">
-          Supprimer
-        </button>
-      </div>
+      ${deleteAction}
     </article>
   `;
+}
+
+function renderMessages() {
+  const list = document.getElementById("messagesList");
+  if (!list) return;
+  if (currentMessages.length === 0) {
+    renderEmpty(list);
+    return;
+  }
+  list.innerHTML = currentMessages.map(renderMessageCard).join("");
+}
+
+function initAuth() {
+  const loginButton = document.getElementById("adminLogin");
+  const logoutButton = document.getElementById("adminLogout");
+
+  onAuthStateChanged(auth, (user) => {
+    if (loginButton) loginButton.hidden = isAdmin(user);
+    if (logoutButton) logoutButton.hidden = !user || user.isAnonymous;
+    renderMessages();
+  });
+
+  loginButton?.addEventListener("click", async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({ login_hint: adminEmail });
+      const { user } = await signInWithPopup(auth, provider);
+      if (!isAdmin(user)) {
+        setStatus("Ce compte Google n'est pas le compte administrateur.", true);
+      } else {
+        setStatus("Mode administrateur activé.");
+      }
+    } catch (error) {
+      console.error("Connexion administrateur impossible :", error);
+      const reason = {
+        "auth/configuration-not-found": "Firebase Authentication n'est pas encore configuré pour ce projet.",
+        "auth/operation-not-allowed": "La connexion Google n'est pas activée dans Firebase.",
+        "auth/unauthorized-domain": "Ce domaine n'est pas autorisé dans Firebase Authentication.",
+        "auth/popup-blocked": "La fenêtre de connexion Google a été bloquée par le navigateur."
+      }[error.code];
+      setStatus(reason || "Connexion administrateur impossible. Réessaie plus tard.", true);
+    }
+  });
+
+  logoutButton?.addEventListener("click", async () => {
+    try {
+      await signOut(auth);
+      setStatus("Compte Google déconnecté.");
+    } catch (error) {
+      console.error("Déconnexion impossible :", error);
+      setStatus("Déconnexion impossible.", true);
+    }
+  });
 }
 
 function setStatus(text, isError = false) {
@@ -172,17 +251,11 @@ function listenMessages() {
   onSnapshot(
     messagesQuery,
     (snapshot) => {
-      const messages = snapshot.docs.map((messageDoc) => ({
+      currentMessages = snapshot.docs.map((messageDoc) => ({
         id: messageDoc.id,
         ...messageDoc.data()
       }));
-
-      if (messages.length === 0) {
-        renderEmpty(list);
-        return;
-      }
-
-      list.innerHTML = messages.map(renderMessageCard).join("");
+      renderMessages();
       setStatus("");
     },
     (error) => {
@@ -208,9 +281,11 @@ function initGuestForm() {
     if (!name || !text) return;
 
     try {
+      const user = auth.currentUser || (await signInAnonymously(auth)).user;
       await addDoc(messagesRef, {
         name,
         text,
+        ownerId: user.uid,
         createdAt: serverTimestamp()
       });
 
@@ -219,7 +294,12 @@ function initGuestForm() {
       window.setTimeout(() => form.classList.remove("sent"), 450);
     } catch (error) {
       console.error("Impossible d'enregistrer le message :", error);
-      setStatus("Impossible d'enregistrer le message Firebase.", true);
+      setStatus(
+        error.code?.startsWith("auth/")
+          ? "La connexion des auteurs n'est pas encore activée sur Firebase."
+          : "Impossible d'enregistrer le message Firebase.",
+        true
+      );
     }
   });
 
@@ -229,12 +309,16 @@ function initGuestForm() {
 
     const id = deleteButton.dataset.id;
     if (!id) return;
+    const message = currentMessages.find((item) => item.id === id);
+    if (!message || !canDelete(message)) return;
 
     try {
+      deleteButton.disabled = true;
       await deleteDoc(doc(db, "messages", id));
     } catch (error) {
       console.error("Impossible de supprimer le message :", error);
       setStatus("Impossible de supprimer le message Firebase.", true);
+      deleteButton.disabled = false;
     }
   });
 }
@@ -242,6 +326,7 @@ function initGuestForm() {
 document.addEventListener("DOMContentLoaded", () => {
   initStatus();
   initPhotoCarousels();
+  initAuth();
   listenMessages();
   initGuestForm();
 });
